@@ -1,0 +1,38 @@
+Questão 05 - #include <stdio.h>
+
+// Definição da estrutura para representar uma banda de música
+struct Banda {
+    char nome[50];
+    char tipoMusica[50];
+    int numIntegrantes;
+    int posicaoRanking;
+};
+
+int main() {
+    // Criando uma instância da estrutura para uma banda
+    struct Banda minhaBanda;
+
+    // Preenchendo os valores da banda
+    printf("Digite o nome da banda: ");
+    scanf("%s", minhaBanda.nome);
+
+    printf("Digite o tipo de música da banda: ");
+    scanf("%s", minhaBanda.tipoMusica);
+
+    printf("Digite o número de integrantes da banda: ");
+    scanf("%d", &minhaBanda.numIntegrantes);
+
+    printf("Digite a posição da banda no seu ranking favorito (1 a 5): ");
+    scanf("%d", &minhaBanda.posicaoRanking);
+
+    // Exibindo os valores da banda
+    printf("\nBanda: %s\n", minhaBanda.nome);
+    printf("Tipo de música: %s\n", minhaBanda.tipoMusica);
+    printf("Número de integrantes: %d\n", minhaBanda.numIntegrantes);
+    printf("Posição no ranking favorito: %d\n", minhaBanda.posicaoRanking);
+
+    return 0;
+}
+
+Questão 06 - Para gerenciar a ordem de execução de processos e threads em um sistema operacional, uma estrutura de dados ideal seria uma fila de prioridade. Nessa estrutura, os elementos são organizados com base em suas prioridades, permitindo que o sistema escolha o próximo elemento a ser executado com eficiência, dando preferência aos mais prioritários. 
+Questão 07 - Para implementar uma função que desfaça ou refaça a última ação tomada em um sistema, uma estrutura de dados adequada seria uma pilha. Nesta estrutura, os elementos são inseridos e removidos seguindo o princípio Last-In-First-Out (LIFO), o que significa que a última ação executada é a primeira a ser desfeita ou refeita. A pilha oferece uma abordagem simples e eficiente para rastrear o histórico de ações, facilitando o controle das operações de desfazer e refazer de forma sequencial.
