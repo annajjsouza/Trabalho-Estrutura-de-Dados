@@ -88,7 +88,85 @@ int main() {
     return 0;
 }
 
-Questão 04 - QUESTÃO 4:
+Questão 03 - #include <iostream>
+
+using namespace std;
+
+// Função para imprimir o tabuleiro
+void imprimirTabuleiro(char tabuleiro[3][3]) {
+    cout << "  1 2 3" << endl;
+    for (int i = 0; i < 3; ++i) {
+        cout << i + 1 << " ";
+        for (int j = 0; j < 3; ++j) {
+            cout << tabuleiro[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+// Função para verificar se houve um vencedor
+char verificarVencedor(char tabuleiro[3][3]) {
+    // Verificação das linhas e colunas
+    for (int i = 0; i < 3; ++i) {
+        if (tabuleiro[i][0] != ' ' && tabuleiro[i][0] == tabuleiro[i][1] && tabuleiro[i][0] == tabuleiro[i][2]) {
+            return tabuleiro[i][0]; // Retorna o vencedor
+        }
+        if (tabuleiro[0][i] != ' ' && tabuleiro[0][i] == tabuleiro[1][i] && tabuleiro[0][i] == tabuleiro[2][i]) {
+            return tabuleiro[0][i]; // Retorna o vencedor
+        }
+    }
+    // Verificação das diagonais
+    if (tabuleiro[0][0] != ' ' && tabuleiro[0][0] == tabuleiro[1][1] && tabuleiro[0][0] == tabuleiro[2][2]) {
+        return tabuleiro[0][0]; // Retorna o vencedor
+    }
+    if (tabuleiro[0][2] != ' ' && tabuleiro[0][2] == tabuleiro[1][1] && tabuleiro[0][2] == tabuleiro[2][0]) {
+        return tabuleiro[0][2]; // Retorna o vencedor
+    }
+    // Caso não haja vencedor ainda
+    return ' ';
+}
+
+int main() {
+    char tabuleiro[3][3] = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+    char jogador = 'X';
+    int linha, coluna;
+    char vencedor = ' ';
+
+    cout << "Bem-vindo ao Jogo da Velha!" << endl;
+
+    while (vencedor == ' ') {
+        imprimirTabuleiro(tabuleiro);
+        cout << "Jogador " << jogador << ", é sua vez." << endl;
+        cout << "Digite a linha (1 a 3): ";
+        cin >> linha;
+        cout << "Digite a coluna (1 a 3): ";
+        cin >> coluna;
+
+        // Verifica se a posição está disponível
+        if (tabuleiro[linha - 1][coluna - 1] == ' ') {
+            tabuleiro[linha - 1][coluna - 1] = jogador;
+            vencedor = verificarVencedor(tabuleiro);
+            // Troca de jogador
+            jogador = (jogador == 'X') ? 'O' : 'X';
+        } else {
+            cout << "Posição já ocupada. Tente novamente." << endl;
+        }
+    }
+
+    // Imprime o tabuleiro final
+    imprimirTabuleiro(tabuleiro);
+
+    // Verifica o vencedor
+    if (vencedor != ' ') {
+        cout << "Parabéns, jogador " << vencedor << "! Você venceu!" << endl;
+    } else {
+        cout << "Empate!" << endl;
+    }
+
+    return 0;
+}
+
+Questão 04 -
 #include <stdio.h>
 
 int main() {
@@ -149,4 +227,32 @@ int main() {
 }
 
 Questão 06 - Para gerenciar a ordem de execução de processos e threads em um sistema operacional, uma estrutura de dados ideal seria uma fila de prioridade. Nessa estrutura, os elementos são organizados com base em suas prioridades, permitindo que o sistema escolha o próximo elemento a ser executado com eficiência, dando preferência aos mais prioritários. 
+
 Questão 07 - Para implementar uma função que desfaça ou refaça a última ação tomada em um sistema, uma estrutura de dados adequada seria uma pilha. Nesta estrutura, os elementos são inseridos e removidos seguindo o princípio Last-In-First-Out (LIFO), o que significa que a última ação executada é a primeira a ser desfeita ou refeita. A pilha oferece uma abordagem simples e eficiente para rastrear o histórico de ações, facilitando o controle das operações de desfazer e refazer de forma sequencial.
+
+Questão 08 - #include <iostream>
+
+using namespace std;
+
+// Função para trocar os valores das variáveis usando ponteiros
+void trocarValores(int *ptr1, int *ptr2) {
+    int temp = *ptr1;
+    *ptr1 = *ptr2;
+    *ptr2 = temp;
+}
+
+int main() {
+    int a = 5;
+    int b = 10;
+
+    cout << "Valores antes da troca:" << endl;
+    cout << "a = " << a << ", b = " << b << endl;
+
+    // Chama a função para trocar os valores
+    trocarValores(&a, &b);
+
+    cout << "Valores depois da troca:" << endl;
+    cout << "a = " << a << ", b = " << b << endl;
+
+    return 0;
+}
